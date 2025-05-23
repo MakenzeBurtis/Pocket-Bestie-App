@@ -85,3 +85,9 @@ resetBtn.addEventListener('click', resetApp);
 
 // Start the app
 showQuestion(currentQuestionIndex);
+
+document.getElementById("welcome-screen").addEventListener("click", () => {
+  document.getElementById("welcome-screen").classList.add("hidden");
+  document.getElementById("main-menu").classList.remove("hidden");
+});
+
