@@ -1,35 +1,22 @@
-// app.js - basic logic for Pocket Bestie Roasting App
+// app.js - updated for exact response per button
 
-// Responses database keyed by scenario
 const responses = {
-  forgotSomething: [
-    "Brandon, you forgot again? Classic.",
-    "Did Brandon leave his brain at home today?",
-    "Honestly, Brandon’s memory is like a sieve.",
-  ],
-  badAdvice: [
-    "Brandon’s advice: 100% guaranteed to backfire.",
-    "Trust Brandon? Nope, not today.",
-    "Brandon giving advice is peak comedy gold.",
-  ],
-  sillyArgue: [
-    "Brandon arguing? Someone get the popcorn!",
-    "He’s wrong and he knows it, but still argues.",
-    "Brandon, the king of dumb debates.",
-  ]
+  "Forgot something": "Brandon, you forgot again? Classic.",
+  "Gave bad advice": "Brandon’s advice: 100% guaranteed to backfire.",
+  "Argued silly": "Brandon arguing? Someone get the popcorn!"
 };
 
-// Elements
 const questionEl = document.getElementById('question');
 const buttonsEl = document.getElementById('buttons');
 const responseEl = document.getElementById('response');
 
-// Current question index and keys for scenarios
 const questions = [
-  { text: "What did Brandon do?", key: 'forgotSomething', options: ["Forgot something", "Gave bad advice", "Argued silly"] }
+  { 
+    text: "What did Brandon do?", 
+    options: ["Forgot something", "Gave bad advice", "Argued silly"] 
+  }
 ];
 
-// Start app
 function start() {
   showQuestion(0);
 }
@@ -37,21 +24,20 @@ function start() {
 function showQuestion(index) {
   const q = questions[index];
   questionEl.textContent = q.text;
-  buttonsEl.innerHTML = ''; // clear old buttons
+  buttonsEl.innerHTML = ''; // clear previous buttons
 
   q.options.forEach(option => {
     const btn = document.createElement('button');
     btn.textContent = option;
-    btn.onclick = () => showResponse(q.key);
+    btn.onclick = () => showResponse(option);
     buttonsEl.appendChild(btn);
   });
+
+  responseEl.textContent = ''; // clear previous response
 }
 
 function showResponse(key) {
-  const arr = responses[key];
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  responseEl.textContent = arr[randomIndex];
+  responseEl.textContent = responses[key] || "Hmm... Brandon must be quiet today.";
 }
 
-// Initialize app when page loads
 window.onload = start;
