@@ -6,10 +6,10 @@
   <title>Pocket Bestie</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  
 <body>
+
   <!-- Welcome Screen -->
-  <div id="welcome-screen" class="full-screen">
+  <div id="welcome-screen" class="full-screen" style="height: 100vh; width: 100vw;">
     <h1 class="app-title">Pocket Bestie</h1>
     <p class="tap-start">tap anywhere to start</p>
   </div>
@@ -25,10 +25,44 @@
       <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
     </div>
   </div>
-  
+
   <!-- Brandon Sucks Screen -->
-  <div id="brandon-sucks" class="hidden section-screen">
+  <div id="brandon-sucks" class="section-screen hidden">
     <h2 class="menu-title">Brandon Sucks</h2>
     <div id="question-container" class="question-container"></div>
     <div id="response" class="response"></div>
-    <button id="reset-btn">Restart</but
+    <button id="reset-btn">Restart</button>
+    <button id="back-to-menu-btn">Back to Menu</button>
+  </div>
+
+  <!-- Roast Brandon Screen -->
+  <div id="roast-brandon" class="section-screen hidden">
+    <h2 class="menu-title">Roast Brandon</h2>
+    <p>Coming Soon!</p>
+    <button id="back-to-menu-btn-roast">Back to Menu</button>
+  </div>
+
+  <!-- Vent Screen -->
+  <div id="vent" class="section-screen hidden">
+    <h2 class="menu-title">I Need to Vent</h2>
+    <p>Coming Soon!</p>
+    <button id="back-to-menu-btn-vent">Back to Menu</button>
+  </div>
+
+  <!-- Favorites Screen -->
+  <div id="favorites" class="section-screen hidden">
+    <h2 class="menu-title">Favorites</h2>
+    <p>Coming Soon!</p>
+    <button id="back-to-menu-btn-favorites">Back to Menu</button>
+  </div>
+
+  <!-- Stupid Stuff Screen -->
+  <div id="stupid-stuff" class="section-screen hidden">
+    <h2 class="menu-title">Stupid Stuff Brandon Said</h2>
+    <p>Coming Soon!</p>
+    <button id="back-to-menu-btn-stupid">Back to Menu</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
