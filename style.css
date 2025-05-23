@@ -104,18 +104,19 @@ button:hover {
     margin: 8px 0;
   }
 }
-/* Welcome screen full screen style */
-.full-screen {
-  height: 100vh;
+#welcome-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
+  height: 100vh;
   background: linear-gradient(to bottom right, #f3e7f3, #e3f0ff);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  cursor: pointer;
   text-align: center;
-  padding: 20px;
 }
 
 /* Brandon Sucks section styles */
