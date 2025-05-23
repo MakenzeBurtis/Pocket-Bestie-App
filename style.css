@@ -118,6 +118,12 @@ button:hover {
   padding: 20px;
 }
 
+/* Brandon Sucks section styles */
+.section-screen {
+  padding: 30px 20px;
+  text-align: center;
+}
+
 .app-title {
   font-size: 2.5rem;
   color: #333;
