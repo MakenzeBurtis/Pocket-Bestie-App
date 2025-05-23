@@ -1,22 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Grab elements by their IDs
   const welcomeScreen = document.getElementById("welcome-screen");
   const mainMenu = document.getElementById("main-menu");
   const brandonSucksScreen = document.getElementById("brandon-sucks");
+  const notImplementedScreen = document.getElementById("not-implemented");
+
   const questionContainer = document.getElementById("question-container");
   const responseEl = document.getElementById("response");
   const resetBtn = document.getElementById("reset-btn");
-  const backToMenuBtn = document.getElementById("back-to-menu-btn"); // We’ll add this in a sec
+  const backToMenuBtn = document.getElementById("back-to-menu-btn");
+  const backFromPlaceholderBtn = document.getElementById("back-from-placeholder-btn");
 
-  // Since the "Back to Menu" button does not have an id in your HTML, 
-  // let’s grab it manually here (for now)
-  // This targets the Back to Menu button inside the brandonSucksScreen
-  const backBtn = brandonSucksScreen.querySelector("button[onclick='goBackToMenu()']");
-
-  let currentQuestionIndex = 0;
-  let selectedAnswers = [];
-
-  // Example questions for "Brandon Sucks" topic
+  // Questions and responses for Brandon Sucks quiz
   const questions = [
     {
       text: "What did Brandon say this time?",
@@ -38,125 +32,107 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // Sample responses mapped to answers
   const responses = {
-    "He forgot our anniversary": "Brandon, are you trying to test if love is patient?",
-    "He burnt dinner": "Well, charred food builds character!",
-    "He lost his keys": "Classic Brandon move — always keeps life interesting.",
-    "He tried to fix the sink and flooded the kitchen": "Plumbing is clearly not his calling!",
-    "He blamed the dog": "Poor dog’s reputation is on the line here.",
-    "He said it wasn’t his fault": "Ah, the classic denial strategy.",
-    "He tried to fix it again and made it worse": "At least he’s persistent!",
-    "He just laughed it off": "Sometimes laughter is the best medicine."
+    "He forgot our anniversary": "Brandon, are you trying to test if love is patient or just forgetful?",
+    "He burnt dinner": "Looks like Brandon’s cooking skills need a little flame control!",
+    "He lost his keys": "Lost keys again? Brandon, are you secretly training to be a magician?",
+    "He tried to fix the sink and flooded the kitchen": "DIY disaster! Brandon, call a plumber next time!",
+    "He blamed the dog": "Classic Brandon move—blame the dog for everything!",
+    "He said it wasn’t his fault": "Passing the buck? Brandon’s favorite pastime!",
+    "He tried to fix it again and made it worse": "Trying to fix it made it worse? At least he’s persistent!",
+    "He just laughed it off": "Laughter is the best defense, huh Brandon?"
   };
 
-  // Show the first question with options as buttons
+  let currentQuestionIndex = 0;
+
+  // Show element and hide others helper
+  function showScreen(screen) {
+    // Hide all main screens
+    welcomeScreen.classList.add("hidden");
+    mainMenu.classList.add("hidden");
+    brandonSucksScreen.classList.add("hidden");
+    notImplementedScreen.classList.add("hidden");
+
+    // Show requested screen
+    screen.classList.remove("hidden");
+  }
+
+  // Display current question
   function showQuestion() {
-    // Clear previous content
-    questionContainer.innerHTML = "";
-    responseEl.textContent = "";
-
-    // Show question container and response area, hide reset button for now
-    questionContainer.classList.remove("hidden");
-    responseEl.classList.remove("hidden");
-    resetBtn.classList.add("hidden");
-
-    // Get current question
     const question = questions[currentQuestionIndex];
+    questionContainer.innerHTML = `<h3>${question.text}</h3>`;
 
-    // Create and add question text
-    const questionTitle = document.createElement("h3");
-    questionTitle.textContent = question.text;
-    questionContainer.appendChild(questionTitle);
-
-    // Create buttons for each option
     question.options.forEach(option => {
       const btn = document.createElement("button");
       btn.textContent = option;
-      btn.classList.add("menu-btn");
-      btn.addEventListener("click", () => selectAnswer(option));
+      btn.className = "menu-btn";
+      btn.addEventListener("click", () => handleAnswer(option));
       questionContainer.appendChild(btn);
     });
+
+    responseEl.textContent = "";
   }
 
   // Handle answer selection
-  function selectAnswer(answer) {
-    selectedAnswers.push(answer);
-
-    // Show the response for that answer
-    responseEl.textContent = responses[answer] || "Hmm... no witty response yet!";
+  function handleAnswer(selectedOption) {
+    responseEl.textContent = responses[selectedOption] || "No response found.";
 
     currentQuestionIndex++;
 
-    // If more questions left, show next question after delay
     if (currentQuestionIndex < questions.length) {
-      setTimeout(showQuestion, 1500);
+      // Show next question after a short delay so user can read response
+      setTimeout(() => {
+        showQuestion();
+      }, 1500);
     } else {
-      // No more questions, show reset button
-      questionContainer.classList.add("hidden");
-      resetBtn.classList.remove("hidden");
+      // Quiz finished
+      questionContainer.innerHTML = "<p>Thanks for playing! You can restart or go back to menu.</p>";
     }
   }
 
-  // Reset quiz to beginning
+  // Reset quiz
   function resetQuiz() {
     currentQuestionIndex = 0;
-    selectedAnswers = [];
+    showQuestion();
     responseEl.textContent = "";
-    resetBtn.classList.add("hidden");
-    questionContainer.classList.remove("hidden");
-    showQuestion();
   }
 
-  // Function to switch to main menu screen
-  function showMainMenu() {
-    welcomeScreen.classList.add("hidden");
-    brandonSucksScreen.classList.add("hidden");
-    questionContainer.classList.add("hidden");
-    responseEl.classList.add("hidden");
-    resetBtn.classList.add("hidden");
+  // Event listeners
 
-    mainMenu.classList.remove("hidden");
-  }
-
-  // Function to switch to Brandon Sucks screen
-  function showBrandonSucks() {
-    welcomeScreen.classList.add("hidden");
-    mainMenu.classList.add("hidden");
-
-    brandonSucksScreen.classList.remove("hidden");
-    questionContainer.classList.remove("hidden");
-    responseEl.classList.remove("hidden");
-
-    resetBtn.classList.add("hidden");
-
-    currentQuestionIndex = 0;
-    selectedAnswers = [];
-    showQuestion();
-  }
-
-  // When user taps anywhere on welcome screen, show main menu
+  // Start app by tapping anywhere on welcome screen
   welcomeScreen.addEventListener("click", () => {
-    welcomeScreen.classList.add("hidden");
-    mainMenu.classList.remove("hidden");
+    showScreen(mainMenu);
   });
 
-  // Listen for clicks on main menu buttons
-  mainMenu.addEventListener("click", (e) => {
-    if (e.target.classList.contains("menu-btn")) {
-      const topic = e.target.getAttribute("data-topic");
+  // Main menu buttons
+  mainMenu.querySelectorAll(".menu-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const topic = button.getAttribute("data-topic");
+
       if (topic === "brandon-sucks") {
-        showBrandonSucks();
+        currentQuestionIndex = 0;
+        showScreen(brandonSucksScreen);
+        showQuestion();
       } else {
-        alert("This topic is not implemented yet.");
+        // For all others, show "not implemented" placeholder
+        showScreen(notImplementedScreen);
       }
-    }
+    });
   });
 
-  // Listen for reset button click
+  // Reset button on Brandon Sucks screen
   resetBtn.addEventListener("click", resetQuiz);
 
-  // Listen for back to menu button click
-  backBtn.addEventListener("click", showMainMenu);
+  // Back to menu button on Brandon Sucks screen
+  backToMenuBtn.addEventListener("click", () => {
+    showScreen(mainMenu);
+  });
 
-  // Expose goBackToMenu function globally since your button uses onclick attribute
+  // Back button on Not Implemented placeholder screen
+  backFromPlaceholderBtn.addEventListener("click", () => {
+    showScreen(mainMenu);
+  });
+
+  // Initially show welcome screen
+  showScreen(welcomeScreen);
+});
