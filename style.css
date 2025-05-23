@@ -112,11 +112,14 @@ button:hover {
   height: 100vh;
   background: linear-gradient(to bottom right, #f3e7f3, #e3f0ff);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+  flex-direction: column;    /* stack children vertically */
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
   cursor: pointer;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
 }
 
 /* Brandon Sucks section styles */
