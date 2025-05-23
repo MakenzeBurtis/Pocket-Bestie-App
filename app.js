@@ -1,6 +1,8 @@
 const questionContainer = document.getElementById('question-container');
 const responseEl = document.getElementById('response');
 const resetBtn = document.getElementById('reset-btn');
+const mainMenu = document.getElementById('main-menu');
+const welcomeScreen = document.getElementById('welcome-screen');
 
 let currentQuestionIndex = 0;
 let selectedAnswers = [];
@@ -58,36 +60,53 @@ function showQuestion(index) {
       questionContainer.appendChild(btn);
     });
   } else {
-    // All questions answered, show roast response
     showResponse();
   }
 }
 
 function showResponse() {
   questionContainer.innerHTML = ""; // clear questions/buttons
-  // Create the combined roast response based on selected answers
   let roast = "Here's what I think about Brandon:\n\n";
   selectedAnswers.forEach(answer => {
     roast += responses[answer] + "\n";
   });
   responseEl.textContent = roast;
+  responseEl.classList.remove('hidden');
+  questionContainer.classList.add('hidden');
 }
 
 function resetApp() {
   currentQuestionIndex = 0;
   selectedAnswers = [];
   responseEl.textContent = "";
+  responseEl.classList.add('hidden');
+  questionContainer.classList.remove('hidden');
+  resetBtn.classList.remove('hidden');
   showQuestion(currentQuestionIndex);
 }
 
-// Attach reset button event
-resetBtn.addEventListener('click', resetApp);
-
-// Start the app
-showQuestion(currentQuestionIndex);
-
-document.getElementById("welcome-screen").addEventListener("click", () => {
-  document.getElementById("welcome-screen").classList.add("hidden");
-  document.getElementById("main-menu").classList.remove("hidden");
+// Welcome screen tap to open main menu
+welcomeScreen.addEventListener("click", () => {
+  welcomeScreen.classList.add("hidden");
+  mainMenu.classList.remove("hidden");
 });
 
+// Menu button click handler
+document.querySelectorAll(".menu-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const topic = btn.dataset.topic;
+
+    if(topic === "brandon-sucks") {
+      mainMenu.classList.add("hidden");
+      resetBtn.classList.remove("hidden");
+      responseEl.classList.add("hidden");
+      questionContainer.classList.remove("hidden");
+      resetApp();
+    } else {
+      alert(`The "${btn.textContent}" section is not implemented yet.`);
+    }
+  });
+});
+
+// Reset button event
+resetBtn.addEventListener('click', resetApp);
