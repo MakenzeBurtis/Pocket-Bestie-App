@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pocket Bestie Roasting App</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 <body>
-  <div class="container">
-    <h1>Pocket Bestie Roasting App</h1>
-    <h2>Brandon Edition</h2>
+  <!-- Welcome Screen -->
+  <div id="welcome-screen" class="full-screen">
+    <h1 class="app-title">Pocket Bestie</h1>
+    <p class="tap-start">tap anywhere to start</p>
+  </div>
 
-    <div id="question-container" class="question-container"></div>
-    <div id="response" class="response"></div>
-    <button id="reset-btn">Reset</button>
+  <!-- Main Menu Screen -->
+  <div id="main-menu" class="hidden">
+    <h2 class="menu-title">Pick Your Poison</h2>
+    <div class="menu-buttons">
+      <button class="menu-btn">Brandon Sucks</button>
+      <button class="menu-btn">Roast Brandon</button>
+      <button class="menu-btn">I Need to Vent</button>
+      <button class="menu-btn">Favorites</button>
+      <button class="menu-btn">Stupid Stuff Brandon Said</button>
+    </div>
   </div>
 
   <script src="app.js"></script>
 </body>
-</html>
