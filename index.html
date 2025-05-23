@@ -9,13 +9,22 @@
   <div id="main-menu" class="hidden">
     <h2 class="menu-title">Pick Your Poison</h2>
     <div class="menu-buttons">
-      <button class="menu-btn">Brandon Sucks</button>
-      <button class="menu-btn">Roast Brandon</button>
-      <button class="menu-btn">I Need to Vent</button>
-      <button class="menu-btn">Favorites</button>
-      <button class="menu-btn">Stupid Stuff Brandon Said</button>
+      <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
+      <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
+      <button class="menu-btn" data-topic="vent">I Need to Vent</button>
+      <button class="menu-btn" data-topic="favorites">Favorites</button>
+      <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
     </div>
   </div>
+
+  <!-- Question Container -->
+  <div id="question-container" class="container hidden"></div>
+
+  <!-- Response Display -->
+  <div id="response" class="response container hidden"></div>
+
+  <!-- Reset Button -->
+  <button id="reset-btn" class="hidden">Reset</button>
 
   <script src="app.js"></script>
 </body>
