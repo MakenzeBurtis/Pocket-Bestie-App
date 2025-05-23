@@ -1,43 +1,80 @@
-// app.js - updated for exact response per button
+// Global variables
+let currentQuestionIndex = 0;
+let selectedAnswers = [];
 
-const responses = {
-  "Forgot something": "Brandon, you forgot again? Classic.",
-  "Gave bad advice": "Brandon’s advice: 100% guaranteed to backfire.",
-  "Argued silly": "Brandon arguing? Someone get the popcorn!"
-};
-
-const questionEl = document.getElementById('question');
-const buttonsEl = document.getElementById('buttons');
-const responseEl = document.getElementById('response');
-
+// Questions array (keep adding or edit these later)
 const questions = [
-  { 
-    text: "What did Brandon do?", 
-    options: ["Forgot something", "Gave bad advice", "Argued silly"] 
+  {
+    text: "What did Brandon do?",
+    options: ["Forgot something", "Gave bad advice", "Argued silly"]
+  },
+  {
+    text: "How bad was it?",
+    options: ["Mild", "Pretty bad", "Nuclear"]
+  },
+  {
+    text: "How did he respond?",
+    options: ["Defensive", "Denied it", "Tried to joke", "Apologized poorly"]
   }
 ];
 
+// Roast responses keyed by combined answers
+const responses = {
+  "Forgot something|Mild|Defensive": "Ah yes, Brandon *forgot* and somehow made it your fault. Classic.",
+  "Gave bad advice|Pretty bad|Denied it": "Brandon giving advice then pretending he didn’t say it? A mystery for the FBI.",
+  "Argued silly|Nuclear|Tried to joke": "When in doubt, joke it out… but you’re still wrong, Brandon.",
+  "Gave bad advice|Nuclear|Apologized poorly": "Brandon’s apology was so weak, I actually got mad for you.",
+  "Forgot something|Pretty bad|Tried to joke": "Brandon joked? Cool. Tell him he’s also sleeping on the couch tonight.",
+  "Argued silly|Mild|Defensive": "Imagine being *loud and wrong.* Now imagine being Brandon."
+};
+
+// Grab HTML elements once
+const questionContainer = document.getElementById("question-container");
+const responseEl = document.getElementById("response");
+const resetBtn = document.getElementById("reset-btn");
+
+// Start function resets and begins quiz
 function start() {
-  showQuestion(0);
+  currentQuestionIndex = 0;
+  selectedAnswers = [];
+  responseEl.textContent = "";
+  showNextQuestion();
 }
 
-function showQuestion(index) {
-  const q = questions[index];
-  questionEl.textContent = q.text;
-  buttonsEl.innerHTML = ''; // clear previous buttons
+// Show question or final roast
+function showNextQuestion() {
+  questionContainer.innerHTML = "";
+  responseEl.textContent = "";
 
-  q.options.forEach(option => {
-    const btn = document.createElement('button');
-    btn.textContent = option;
-    btn.onclick = () => showResponse(option);
-    buttonsEl.appendChild(btn);
-  });
+  if (currentQuestionIndex < questions.length) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionEl = document.createElement("div");
+    questionEl.textContent = currentQuestion.text;
 
-  responseEl.textContent = ''; // clear previous response
+    currentQuestion.options.forEach(option => {
+      const button = document.createElement("button");
+      button.textContent = option;
+      button.addEventListener("click", () => {
+        selectedAnswers.push(option);
+        currentQuestionIndex++;
+        showNextQuestion();
+      });
+      questionEl.appendChild(button);
+    });
+
+    questionContainer.appendChild(questionEl);
+  } else {
+    // Show roast based on answers
+    const key = selectedAnswers.join('|');
+    const roast = responses[key] || "Brandon's chaos is beyond this app. Just roast him manually. 🔥";
+    responseEl.textContent = roast;
+  }
 }
 
-function showResponse(key) {
-  responseEl.textContent = responses[key] || "Hmm... Brandon must be quiet today.";
-}
+// Reset button event listener
+resetBtn.addEventListener("click", () => {
+  start();
+});
 
-window.onload = start;
+// Initialize the quiz on page load
+start();
