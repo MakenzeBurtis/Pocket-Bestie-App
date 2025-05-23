@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 /* Reset some default styles */
 * {
   box-sizing: border-box;
