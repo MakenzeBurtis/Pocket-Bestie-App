@@ -9,7 +9,7 @@
 <body>
 
   <!-- Welcome Screen -->
-  <div id="welcome-screen" class="full-screen" style="height: 100vh; width: 100vw;">
+  <div id="welcome-screen" class="full-screen">
     <h1 class="app-title">Pocket Bestie</h1>
     <p class="tap-start">tap anywhere to start</p>
   </div>
@@ -27,7 +27,7 @@
   </div>
 
   <!-- Brandon Sucks Screen -->
-  <div id="brandon-sucks" class="section-screen hidden">
+  <div id="brandon-sucks" class="hidden section-screen">
     <h2 class="menu-title">Brandon Sucks</h2>
     <div id="question-container" class="question-container"></div>
     <div id="response" class="response"></div>
@@ -35,34 +35,30 @@
     <button id="back-to-menu-btn">Back to Menu</button>
   </div>
 
-  <!-- Roast Brandon Screen -->
-  <div id="roast-brandon" class="section-screen hidden">
-    <h2 class="menu-title">Roast Brandon</h2>
-    <p>Coming Soon!</p>
-    <button id="back-to-menu-btn-roast">Back to Menu</button>
-  </div>
+  <script>
+    // Grab elements
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const mainMenu = document.getElementById('main-menu');
+    const brandonSucksScreen = document.getElementById('brandon-sucks');
+    const backToMenuBtn = document.getElementById('back-to-menu-btn');
 
-  <!-- Vent Screen -->
-  <div id="vent" class="section-screen hidden">
-    <h2 class="menu-title">I Need to Vent</h2>
-    <p>Coming Soon!</p>
-    <button id="back-to-menu-btn-vent">Back to Menu</button>
-  </div>
+    // Show main menu on tap anywhere on welcome screen
+    welcomeScreen.addEventListener('click', () => {
+      welcomeScreen.classList.add('hidden');
+      mainMenu.classList.remove('hidden');
+    });
 
-  <!-- Favorites Screen -->
-  <div id="favorites" class="section-screen hidden">
-    <h2 class="menu-title">Favorites</h2>
-    <p>Coming Soon!</p>
-    <button id="back-to-menu-btn-favorites">Back to Menu</button>
-  </div>
+    // Show "Brandon Sucks" screen when its button is clicked
+    document.querySelector('[data-topic="brandon-sucks"]').addEventListener('click', () => {
+      mainMenu.classList.add('hidden');
+      brandonSucksScreen.classList.remove('hidden');
+    });
 
-  <!-- Stupid Stuff Screen -->
-  <div id="stupid-stuff" class="section-screen hidden">
-    <h2 class="menu-title">Stupid Stuff Brandon Said</h2>
-    <p>Coming Soon!</p>
-    <button id="back-to-menu-btn-stupid">Back to Menu</button>
-  </div>
-
-  <script src="app.js"></script>
+    // Go back to main menu from Brandon Sucks screen
+    backToMenuBtn.addEventListener('click', () => {
+      brandonSucksScreen.classList.add('hidden');
+      mainMenu.classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
