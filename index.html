@@ -6,8 +6,8 @@
   <title>Pocket Bestie</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
+<body>
   <!-- Welcome Screen -->
   <div id="welcome-screen" class="full-screen">
     <h1 class="app-title">Pocket Bestie</h1>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <!-- Brandon Sucks Screen -->
+  <!-- Brandon Sucks Quiz Screen -->
   <div id="brandon-sucks" class="hidden section-screen">
     <h2 class="menu-title">Brandon Sucks</h2>
     <div id="question-container" class="question-container"></div>
@@ -35,30 +35,13 @@
     <button id="back-to-menu-btn">Back to Menu</button>
   </div>
 
-  <script>
-    // Grab elements
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const mainMenu = document.getElementById('main-menu');
-    const brandonSucksScreen = document.getElementById('brandon-sucks');
-    const backToMenuBtn = document.getElementById('back-to-menu-btn');
+  <!-- Placeholder screens for other menu items -->
+  <div id="not-implemented" class="hidden section-screen">
+    <h2 class="menu-title">Coming Soon!</h2>
+    <p>This feature is not implemented yet.</p>
+    <button id="back-from-placeholder-btn">Back to Menu</button>
+  </div>
 
-    // Show main menu on tap anywhere on welcome screen
-    welcomeScreen.addEventListener('click', () => {
-      welcomeScreen.classList.add('hidden');
-      mainMenu.classList.remove('hidden');
-    });
-
-    // Show "Brandon Sucks" screen when its button is clicked
-    document.querySelector('[data-topic="brandon-sucks"]').addEventListener('click', () => {
-      mainMenu.classList.add('hidden');
-      brandonSucksScreen.classList.remove('hidden');
-    });
-
-    // Go back to main menu from Brandon Sucks screen
-    backToMenuBtn.addEventListener('click', () => {
-      brandonSucksScreen.classList.add('hidden');
-      mainMenu.classList.remove('hidden');
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
