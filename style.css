@@ -6,6 +6,16 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Change all button text to black */
+button, .menu-btn {
+  color: black;
+}
+
+/* Change headings and paragraph text to black */
+h1, h2, h3, p, .app-title, .tap-start, .menu-title {
+  color: black;
+}
+
 /* Body & container */
 body {
   background: #f9f9f9;
