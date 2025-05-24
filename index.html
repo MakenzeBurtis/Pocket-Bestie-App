@@ -6,29 +6,24 @@
   <title>Pocket Bestie</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- Welcome Screen -->
-  <div id="welcome-screen">
+  <div id="welcome-screen" class="screen">
     <h1 class="app-title">Pocket Bestie</h1>
-    <p class="tap-start">Tap anywhere to start</p>
+    <button id="start-button">Start</button>
   </div>
 
-  <!-- Main Menu -->
-  <div id="main-menu" class="hidden">
+  <!-- Main Menu Screen -->
+  <div id="main-menu" class="screen hidden">
     <h2 class="menu-title">Pick Your Poison</h2>
     <div class="menu-buttons">
       <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
       <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
+      <button class="menu-btn" data-topic="vent">I Need to Vent</button>
+      <button class="menu-btn" data-topic="favorites">Favorites</button>
+      <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
     </div>
-  </div>
-
-  <!-- Brandon Sucks Section -->
-  <div id="brandon-sucks-screen" class="hidden">
-    <h2>Brandon Sucks</h2>
-    <div id="question-container"></div>
-    <div id="response"></div>
-    <button id="reset-btn">Restart</button>
-    <button id="back-to-menu-btn">Back to Menu</button>
   </div>
 
   <script src="app.js"></script>
