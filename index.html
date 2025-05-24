@@ -4,28 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pocket Bestie</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; text-align: center; background: #fceef1; }
+    .screen { display: none; padding: 2rem; }
+    .active { display: block; }
+    .menu-btn, .nav-btn { margin: 1rem; padding: 1rem 2rem; font-size: 1rem; cursor: pointer; }
+    .app-title { margin-top: 3rem; font-size: 2.5rem; }
+  </style>
 </head>
 
 <body>
   <!-- Welcome Screen -->
-  <div id="welcome-screen" class="screen">
+  <div id="welcome-screen" class="screen active">
     <h1 class="app-title">Pocket Bestie</h1>
-    <button id="start-button">Start</button>
+    <button id="start-btn" class="menu-btn">Start</button>
   </div>
 
   <!-- Main Menu Screen -->
-  <div id="main-menu" class="screen hidden">
-    <h2 class="menu-title">Pick Your Poison</h2>
-    <div class="menu-buttons">
-      <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
-      <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
-      <button class="menu-btn" data-topic="vent">I Need to Vent</button>
-      <button class="menu-btn" data-topic="favorites">Favorites</button>
-      <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
-    </div>
+  <div id="main-menu" class="screen">
+    <h2 class="app-title">Pick Your Poison</h2>
+    <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
+    <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
+    <button class="menu-btn" data-topic="vent">I Need to Vent</button>
+    <button class="menu-btn" data-topic="favorites">Favorites</button>
+    <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Topic Screens -->
+  <div id="brandon-sucks" class="screen">
+    <h2>Brandon Sucks</h2>
+    <p>This is where the "Brandon Sucks" content will go.</p>
+    <button class="nav-btn" onclick="goBackToMenu()">Back to Menu</button>
+  </div>
+
+  <div id="roast-brandon" class="screen">
+    <h2>Roast Brandon</h2>
+    <p>This is where the roast content goes.</p>
+    <button class="nav-btn" onclick="goBackToMenu()">Back to Menu</button>
+  </div>
+
+  <div id="vent" class="screen">
+    <h2>I Need to Vent</h2>
+    <p>This is where users can vent.</p>
+    <button class="nav-btn" onclick="goBackToMenu()">Back to Menu</button>
+  </div>
+
+  <div id="favorites" class="screen">
+    <h2>Favorites</h2>
+    <p>Favorite entries will show here.</p>
+    <button class="nav-btn" onclick="goBackToMenu()">Back to Menu</button>
+  </div>
+
+  <div id="stupid-stuff" class="screen">
+    <h2>Stupid Stuff Brandon Said</h2>
+    <p>Funny quotes and moments here.</p>
+    <button class="nav-btn" onclick="goBackToMenu()">Back to Menu</button>
+  </div>
+
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    const startBtn = document.getElementById('start-btn');
+    const menuBtns = document.querySelectorAll('.menu-btn');
+
+    function showScreen(id) {
+      screens.forEach(screen => screen.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function goBackToMenu() {
+      showScreen('main-menu');
+    }
+
+    startBtn.addEventListener('click', () => showScreen('main-menu'));
+
+    menuBtns.forEach(btn => {
+      const topicId = btn.dataset.topic;
+      btn.addEventListener('click', () => showScreen(topicId));
+    });
+  </script>
 </body>
 </html>
