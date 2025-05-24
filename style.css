@@ -1,46 +1,120 @@
-body {
+/* Basic Reset */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #fff0f5;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 0;
 }
 
-.screen {
-  display: none;
+/* Body and font */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff0f6; /* light pink background */
+  color: #333;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  padding: 20px;
+}
+
+/* Utility class to hide things */
+.hidden {
+  display: none !important;
+}
+
+/* Welcome screen styling */
+#welcome-screen {
   text-align: center;
 }
 
-.screen.active {
-  display: flex;
+#welcome-screen .app-title {
+  font-size: 3rem;
+  color: #d6336c; /* bright pink */
+  margin-bottom: 20px;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
+#welcome-screen .start-btn {
+  background-color: #d6336c;
   border: none;
-  border-radius: 8px;
-  background-color: #ff69b4;
   color: white;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #ff85c1;
+#welcome-screen .start-btn:hover {
+  background-color: #a32652;
+}
+
+/* Main menu styling */
+#main-menu {
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #d6336c;
 }
 
 .menu-buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.menu-btn {
+  background-color: #d6336c;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-btn:hover {
+  background-color: #a32652;
+}
+
+/* Brandon Sucks screen */
+.section-screen {
+  max-width: 500px;
+  text-align: center;
+}
+
+.question-container {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.response {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+}
+
+#reset-btn,
+.back-btn {
+  background-color: #d6336c;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: background-color 0.3s ease;
+}
+
+#reset-btn:hover,
+.back-btn:hover {
+  background-color: #a32652;
 }
