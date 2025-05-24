@@ -6,7 +6,6 @@
   <title>Pocket Bestie</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <!-- Welcome Screen -->
   <div id="welcome-screen" class="full-screen">
@@ -18,28 +17,12 @@
   <div id="main-menu" class="hidden">
     <h2 class="menu-title">Pick Your Poison</h2>
     <div class="menu-buttons">
-      <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
-      <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
-      <button class="menu-btn" data-topic="vent">I Need to Vent</button>
-      <button class="menu-btn" data-topic="favorites">Favorites</button>
-      <button class="menu-btn" data-topic="stupid-stuff">Stupid Stuff Brandon Said</button>
+      <button class="menu-btn">Brandon Sucks</button>
+      <button class="menu-btn">Roast Brandon</button>
+      <button class="menu-btn">I Need to Vent</button>
+      <button class="menu-btn">Favorites</button>
+      <button class="menu-btn">Stupid Stuff Brandon Said</button>
     </div>
-  </div>
-
-  <!-- Brandon Sucks Quiz Screen -->
-  <div id="brandon-sucks" class="hidden section-screen">
-    <h2 class="menu-title">Brandon Sucks</h2>
-    <div id="question-container" class="question-container"></div>
-    <div id="response" class="response"></div>
-    <button id="reset-btn">Restart</button>
-    <button id="back-to-menu-btn">Back to Menu</button>
-  </div>
-
-  <!-- Placeholder screens for other menu items -->
-  <div id="not-implemented" class="hidden section-screen">
-    <h2 class="menu-title">Coming Soon!</h2>
-    <p>This feature is not implemented yet.</p>
-    <button id="back-from-placeholder-btn">Back to Menu</button>
   </div>
 
   <script src="app.js"></script>
