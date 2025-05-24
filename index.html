@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pocket Bestie</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div id="welcome-screen">
+    <h1 class="app-title">Pocket Bestie</h1>
+    <p class="tap-start">Tap anywhere to start</p>
+  </div>
 
+  <!-- Main Menu -->
+  <div id="main-menu" class="hidden">
+    <h2 class="menu-title">Pick Your Poison</h2>
+    <div class="menu-buttons">
+      <button class="menu-btn" data-topic="brandon-sucks">Brandon Sucks</button>
+      <button class="menu-btn" data-topic="roast-brandon">Roast Brandon</button>
+    </div>
+  </div>
+
+  <!-- Brandon Sucks Section -->
+  <div id="brandon-sucks-screen" class="hidden">
+    <h2>Brandon Sucks</h2>
+    <div id="question-container"></div>
+    <div id="response"></div>
+    <button id="reset-btn">Restart</button>
+    <button id="back-to-menu-btn">Back to Menu</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
