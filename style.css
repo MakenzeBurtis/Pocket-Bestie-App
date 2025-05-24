@@ -1,1 +1,25 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #fff0f5;
+}
 
+.hidden {
+  display: none;
+}
+
+#welcome-screen, #main-menu, #brandon-sucks-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  margin: 10px;
+  padding: 1em 2em;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
