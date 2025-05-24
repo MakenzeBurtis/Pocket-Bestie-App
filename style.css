@@ -1,8 +1,4 @@
-.hidden {
-  display: none;
-}
-
-/* Reset some default styles */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,154 +6,49 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Change all button text to black */
-button, .menu-btn {
-  color: black;
-}
-
-/* Change headings and paragraph text to black */
-h1, h2, h3, p, .app-title, .tap-start, .menu-title {
-  color: black;
-}
-
-/* Body & container */
-body {
-  background: #f9f9f9;
-  color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-.container {
-  background: #fff;
-  max-width: 400px;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  padding: 30px 25px;
-  text-align: center;
-}
-
-/* Titles */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 5px;
-  color: #d6336c; /* sassy pink */
-}
-
-h2 {
-  font-weight: 400;
-  margin-bottom: 25px;
-  color: #555;
-}
-
-/* Questions */
-.question-container h3 {
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-}
-
-/* Buttons */
-button {
-  background: #d6336c;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  margin: 8px 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #a32652;
-}
-
-/* Response box */
-.response {
-  margin-top: 25px;
-  font-style: italic;
-  white-space: pre-wrap; /* preserves new lines in response */
-  font-size: 1.1rem;
-  color: #444;
-}
-
-/* Reset button style */
-#reset-btn {
-  margin-top: 30px;
-  background: #555;
-  font-weight: 600;
-}
-
-#reset-btn:hover {
-  background: #333;
-}
-
-/* Responsive tweaks */
-@media (max-width: 480px) {
-  .container {
-    padding: 25px 15px;
-  }
-  
-  button {
-    width: 100%;
-    margin: 8px 0;
-  }
-}
-#welcome-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to bottom right, #f3e7f3, #e3f0ff);
-  display: flex;
-  flex-direction: column;    /* stack children vertically */
-  justify-content: center;   /* center vertically */
-  align-items: center;       /* center horizontally */
-  cursor: pointer;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 9999;
-}
-
-/* Brandon Sucks section styles */
-.section-screen {
-  padding: 30px 20px;
-  text-align: center;
-}
-
-.app-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.tap-start {
-  font-size: 1rem;
-  color: #888;
-}
-
-/* Hide elements */
+/* Hidden class */
 .hidden {
   display: none;
 }
 
-/* Main menu style */
-#main-menu {
-  padding: 40px 20px;
+/* Full screen welcome style */
+.full-screen {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom right, #f3e7f3, #e3f0ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-family: 'Helvetica Neue', sans-serif;
+  padding: 20px;
+}
+
+.app-title {
+  font-size: 3rem;
+  color: #d6336c;
+  margin-bottom: 15px;
+}
+
+.tap-start {
+  font-size: 1.25rem;
+  color: #888;
+}
+
+/* Main menu styles */
+#main-menu {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .menu-title {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 25px;
   color: #333;
 }
 
